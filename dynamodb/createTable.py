@@ -133,11 +133,9 @@ table = dynamodb.create_table(
                 },
             ],
         },
-        'Projection' : [
-            {
+        'Projection' : {
                 'ProjectionType': 'KEYS_ONLY',
-            },
-        ],
+        },
 
     ],
     KeySchema=[
@@ -155,3 +153,5 @@ table = dynamodb.create_table(
         'WriteCapacityUnits': 5
     }
 );
+
+print "Reply table created"
