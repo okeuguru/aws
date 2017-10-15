@@ -92,16 +92,16 @@ print "creating Reply table ......."
 
 table = dynamodb.create_table(
     TableName='Reply',
-    KeySchema=[
-        {
-            'AttributeName': 'ForumName',
-            'KeyType': 'HASH'
-        },
-        {
-            'AttributeName': 'Subject',
-            'KeyType': 'RANGE'
-        },
-    ],
+        KeySchema=[
+            {
+                'AttributeName': 'Id',
+                'KeyType': 'HASH'
+            },
+            {
+                'AttributeName': 'ReplyDateTime',
+                'KeyType': 'RANGE'
+            },
+        ],
     AttributeDefinitions=[
         {
             'AttributeName': 'Id',
@@ -117,34 +117,23 @@ table = dynamodb.create_table(
         },
 
     ],
-    KeySchema=[
-        {
-            'AttributeName': 'Id',
-            'KeyType': 'HASH'
-        },
-        {
-            'AttributeName': 'ReplyDateTime',
-            'KeyType': 'RANGE'
-        },
-    ],
     LocalSecondaryIndexes=[
         {
-        'IndexName': 'PostedBy-index',
+            'IndexName': 'PostedBy-index',
 
-            'KeySchema': [
-                {
-                    'AttributeName': 'Id',
-                    'KeyType': 'HASH'
-                },
-                {
-                    'AttributeName': 'PostedBy',
-                    'KeyType': 'RANGE'
-                },
-            ],
-        'Projection' : {
-                'ProjectionType': 'KEYS_ONLY',
-              }
-
+                'KeySchema': [
+                    {
+                        'AttributeName': 'Id',
+                        'KeyType': 'HASH'
+                    },
+                    {
+                        'AttributeName': 'PostedBy',
+                        'KeyType': 'RANGE'
+                    },
+                ],
+            'Projection' : {
+                    'ProjectionType': 'KEYS_ONLY',
+                  }
         },
     ],
     ProvisionedThroughput={
