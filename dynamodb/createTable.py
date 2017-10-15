@@ -133,7 +133,7 @@ table = dynamodb.create_table(
                 },
             ],
         },
-        'Projection' = [
+        'Projection' : [
             {
                 'ProjectionType': 'KEYS_ONLY',
             },
