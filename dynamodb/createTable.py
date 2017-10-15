@@ -122,7 +122,7 @@ table = dynamodb.create_table(
         {
         'IndexName': 'PostedBy-index',
 
-            'KeySchema'=[
+            'KeySchema': [
                 {
                     'AttributeName': 'Id',
                     'KeyType': 'HASH'
