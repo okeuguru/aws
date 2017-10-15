@@ -121,17 +121,18 @@ table = dynamodb.create_table(
     LocalSecondaryIndexes=[
         {
         'IndexName': 'PostedBy-index',
+
+            'KeySchema'=[
+                {
+                    'AttributeName': 'Id',
+                    'KeyType': 'HASH'
+                },
+                {
+                    'AttributeName': 'PostedBy',
+                    'KeyType': 'RANGE'
+                },
+            ],
         },
-        'KeySchema'=[
-            {
-                'AttributeName': 'Id',
-                'KeyType': 'HASH'
-            },
-            {
-                'AttributeName': 'PostedBy',
-                'KeyType': 'RANGE'
-            },
-        ],
         'Projection' = [
             {
                 'ProjectionType': 'KEYS_ONLY',
@@ -154,4 +155,3 @@ table = dynamodb.create_table(
         'WriteCapacityUnits': 5
     }
 );
-
