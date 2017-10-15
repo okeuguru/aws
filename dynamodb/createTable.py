@@ -117,7 +117,16 @@ table = dynamodb.create_table(
         },
 
     ],
-
+    KeySchema=[
+        {
+            'AttributeName': 'Id',
+            'KeyType': 'HASH'
+        },
+        {
+            'AttributeName': 'ReplyDateTime',
+            'KeyType': 'RANGE'
+        },
+    ],
     LocalSecondaryIndexes=[
         {
         'IndexName': 'PostedBy-index',
@@ -132,19 +141,10 @@ table = dynamodb.create_table(
                     'KeyType': 'RANGE'
                 },
             ],
-        'Projection' : [
+        'Projection' : {
                 'ProjectionType': 'KEYS_ONLY',
-                ],
-        },
-    ],
-    KeySchema=[
-        {
-            'AttributeName': 'Id',
-            'KeyType': 'HASH'
-        },
-        {
-            'AttributeName': 'ReplyDateTime',
-            'KeyType': 'RANGE'
+              }
+
         },
     ],
     ProvisionedThroughput={
