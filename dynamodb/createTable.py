@@ -132,11 +132,10 @@ table = dynamodb.create_table(
                     'KeyType': 'RANGE'
                 },
             ],
-        },
-        'Projection' : {
+        'Projection' : [
                 'ProjectionType': 'KEYS_ONLY',
+                ],
         },
-
     ],
     KeySchema=[
         {
