@@ -3,16 +3,16 @@
 import boto3
 from datetime import datetime, timedelta
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 
 # Wait until the table exists.
 #table.meta.client.get_waiter('table_exists').wait(TableName='ProductCalalog')
 
 # Print out some data about the table.
 table = dynamodb.Table('ProductCatalog')
-print("ProductCatalog table contains " table.item_count "records")
+print ("ProductCatalog table contains " + table.item_count + "records")
 print
-print......
+print '......'s
 print
 print("...Now adding data to ProductCatalog table ...")
 
@@ -132,9 +132,9 @@ with table.batch_writer() as batch:
 
 # Print out some data about the table.
 table = dynamodb.Table('Forum')
-print("Forum table contains " table.item_count "records")
+print("Forum table contains " + table.item_count +"records")
 print
-print......
+print '......'
 print
 print("...Now adding data to Forum table ...")
 
@@ -162,9 +162,9 @@ with table.batch_writer() as batch:
 # Print out some data about the table.
 
 table = dynamodb.Table('Reply')
-print("Reply table contains " table.item_count "records")
+print("Reply table contains " + table.item_count + "records")
 print
-print......
+print '......'
 print
 print("...Now adding data to Reply table ...")
 
