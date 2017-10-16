@@ -1,7 +1,7 @@
 import boto3
 
 # Get the service resource.
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 
 print "creating ProductCatalog table ......."
 
